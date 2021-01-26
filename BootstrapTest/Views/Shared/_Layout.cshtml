@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BootstrapTest
+@using BootstrapTest.Controllers
+@{
+	string activeController = "";
+	if (ViewContext.RouteData.Values["Controller"] != null)
+	{
+		activeController = ViewContext.RouteData.Values["Controller"].ToString();
+	}
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+	<title>Rasmus Sträng - @ViewData["Title"]</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="~/css/scrolling-nav.css" rel="stylesheet">
+
+	<link rel="icon" type="image/png" href="~/img/favicon.svg" />
+
+</head>
+
+<body id="page-top" class="text-white bg-dark">
+	<!-- Bakgrundsbilden -->
+	<div class="parallax" data-parallax="scroll" data-z-index="-1" data-image-src="/img/bg2.jpg">
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-sm navbar-dark fixed-top" id="mainNav">
+			<div class="container text-uppercase">
+				<a class="navbar-brand js-scroll-trigger d-none d-md-block" asp-controller="Home" asp-action="Index"> <h4> <b> Rasmus Sträng </b> </h4> </a>
+				<a class="navbar-brand js-scroll-trigger d-none d-sm-block d-md-none" asp-controller="Home" asp-action="Index"> <h4> <b> RS </b> </h4> </a>
+				<a class="navbar-brand js-scroll-trigger d-sm-none" asp-controller="Home" asp-action="Index"> <h4> <b> Rasmus Sträng </b> </h4> </a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item ml-auto">
+							<a asp-controller="Privacy" asp-action="Index" class="nav-link@(activeController == "Privacy" ? " active" : "")">Privacy</a> <!-- Funkar icke -->
+						</li>
+						<li class="nav-item ml-auto">
+							<a asp-controller="Home" asp-action="Index" class="nav-link@(activeController == "Home" ? " active" : "")">Home</a> <!-- Funkar????? -->
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<section class="container" id="about">
+			@RenderBody()
+		</section>
+
+		<!-- Footer -->
+		<footer class="py-5">
+			<div class="container">
+				<p class="m-0 text-left text-white">Copyright &copy; Rasmus Sträng 2021</p>
+			</div>
+			<!-- /.container -->
+		</footer>
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="~/vendor/jquery/jquery.min.js"></script>
+		<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Custom JavaScript for this theme -->
+		<!-- <script src="~/js/scrolling-nav.js"></script> -->
+		<!-- jquery-bibliotek -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+		<!-- script för bakgrundsbilden -->
+		<script src="~/js/parallax.js"></script>
+		@RenderSection("Scripts", required: false)
+	</div>
+</body>
+
+</html>

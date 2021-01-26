@@ -1,0 +1,161 @@
+/*!
+ * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template/scrolling-nav)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
+ */
+header {
+  padding: 156px 0 100px;
+  /*border-bottom: solid 1px rgba(255, 255, 255, 0.05);  
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.2);*/
+}
+header a, h4 {
+  margin-top: .4em;
+}
+
+section {
+  padding: 150px 0;
+}
+body {
+  font-family: 'JetBrains Mono', monospace;
+}
+#welcome {
+  line-height: 3vw;
+  padding-top: 7rem;
+  font-size: 3vw;
+}
+#welcomee {
+  line-height: 0;
+  padding-top: 7rem;
+  font-size: 6vw;
+}
+.parallax {
+  
+}
+.parallax {
+  min-height: 400px;
+  background: transparent;
+  background-color: rgba(0, 0, 0, 0.801);
+}
+footer p {
+  padding-bottom: 5rem
+}
+.navbar-dark {
+  background: linear-gradient(15deg, #ff6600 30%, #ffa836);
+  height: 5em;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.333);
+}
+nav .navbar-nav li a{
+  font-size: 1rem;
+  /*color: #ffffff9f !important;*/
+}
+nav .navbar-nav li a:hover{
+  color: #ffffff !important;
+}
+.navbar-nav a, h4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-style: italic;
+  font-size: 2rem;
+  /*color: #ffffff !important;*/
+}
+.navbar-toggler-icon{
+  font-size: 1.2em;
+}
+.navbar-toggler-icon:hover{
+  font-size: 1.2em;
+}
+.navbar-toggler {
+  height: 3.5rem;
+  border: none;
+  margin: 2px;
+} 
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none;
+}
+.navbar-toggler:hover {
+  outline: none;
+  border: rgba(255, 255, 255, 0.377) solid 2px;
+  margin: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .navbar-nav a, h4  {
+    margin-left: .1rem;
+    margin-right: .1rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .navbar-nav a, h4  {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+}
+@media screen and (max-width: 575px) {
+  .nav-item {
+    width: 9rem;
+    background: #000000e7;
+    padding-left: 1rem;
+    margin-top: .8rem;
+    /* text-align: right; */
+    border-radius: 5px;
+  }
+}
+#about h2, #contact h2, #services h2, #calculator h2{
+  color: #ff5400 !important;
+  font-weight: bold;
+}
+#carousel-desc {
+  background-color: #000000b4;
+  width: 100%;
+}
+h4{
+  margin-left: -.4rem;
+}
+.carousel-control-prev-icon {
+  border-radius: 50px;
+  padding: 1em;
+  background-color: #000000b4;
+}
+.carousel-control-next-icon {
+  border-radius: 50px;
+  padding: 1em;
+  background-color: #000000b4;
+}
+.carousel-indicators {
+  background-color: #000000b4;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  width: 8rem;
+}
+.carousel-inner {
+  width:100%;
+}
+#contact-container {
+  font-size: 3.3vw;
+  line-height: 3rem;
+}
+@media screen and (min-width: 592px) {
+  #contact-container {
+     font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #contact-container {
+     font-size: 1.5rem;
+  }
+}
+
+#contact-container a{
+  text-decoration: none;
+  color: white !important; /* funkar av någon anledning */
+}
+#contact-container a:link{
+  color: white !important; /* funkar inte av någon anledning */
+}
+#contact-container a:hover{
+  color: white !important;
+  border-bottom: solid white .1em;
+}
+  
