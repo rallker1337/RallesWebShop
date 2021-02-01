@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using BootstrapTest.Models;
+using RasmusWebShop.Models;
 
-namespace BootstrapTest.Controllers
+namespace RasmusWebShop.Controllers
 {
 	public class PrivacyController : Controller
 	{

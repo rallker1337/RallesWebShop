@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BootstrapTest.Data.Migrations
+namespace RasmusWebShop.Data.Migrations
 {
 	public partial class CreateIdentitySchema : Migration
 	{

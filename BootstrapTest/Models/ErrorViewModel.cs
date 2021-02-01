@@ -1,6 +1,6 @@
 using System;
 
-namespace BootstrapTest.Models
+namespace RasmusWebShop.Models
 {
 	public class ErrorViewModel
 	{

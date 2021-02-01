@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using BootstrapTest
-@using BootstrapTest.Controllers
+@using RasmusWebShop
+@using RasmusWebShop.Controllers
 @{
 	string activeController = "";
 	if (ViewContext.RouteData.Values["Controller"] != null)
@@ -47,10 +47,13 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item ml-auto">
-							<a asp-controller="Privacy" asp-action="Index" class="nav-link@(activeController == "Privacy" ? " active" : "")">Privacy</a> <!-- Funkar icke -->
+							<a asp-controller="Home" asp-action="Index" class="nav-link@(activeController == "Home" ? " active" : "")">Home</a> <!-- Funkar????? -->
 						</li>
 						<li class="nav-item ml-auto">
-							<a asp-controller="Home" asp-action="Index" class="nav-link@(activeController == "Home" ? " active" : "")">Home</a> <!-- Funkar????? -->
+							<a asp-controller="Products" asp-action="Index" class="nav-link@(activeController == "Products" ? " active" : "")">Products</a> <!-- Funkar icke -->
+						</li>
+						<li class="nav-item ml-auto">
+							<a asp-controller="Privacy" asp-action="Index" class="nav-link@(activeController == "Privacy" ? " active" : "")">Privacy</a> <!-- Funkar icke -->
 						</li>
 					</ul>
 				</div>
