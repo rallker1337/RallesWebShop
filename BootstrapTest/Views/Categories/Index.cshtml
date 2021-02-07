@@ -1,0 +1,18 @@
+﻿@model RasmusWebShop.ViewModels.CategoriesIndexViewModel
+
+@{
+	ViewData["Title"] = ": " + "Categories";
+}
+
+<div class="row info d-flex align-items-center justify-content-center">
+	@foreach(var category in Model.Categories)
+	{
+		<div   id="product-thumbnail" class="text-center col-lg-3 col-md-3 col-sm-9 shadow-sm m-2 border">
+			<a asp-controller="Products" asp-action="Category" asp-route-Id="@category.Id">
+				<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
+				<h2 class="text-uppercase">@category.Title</h2>
+			</a>
+		</div>
+
+	}
+</div>

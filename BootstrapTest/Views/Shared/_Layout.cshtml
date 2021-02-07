@@ -19,8 +19,9 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<title>Rasmus Sträng - @ViewData["Title"]</title>
+	<title>R.S @ViewData["Title"]</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -32,32 +33,47 @@
 
 </head>
 
-<body id="page-top" class="text-white bg-dark">
+<body id="page-top" class="text-dark bg-secondary">
 	<!-- Bakgrundsbilden -->
 	<div class="parallax" data-parallax="scroll" data-z-index="-1" data-image-src="/img/bg2.jpg">
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-sm navbar-dark fixed-top" id="mainNav">
 			<div class="container text-uppercase">
-				<a class="navbar-brand js-scroll-trigger d-none d-md-block" asp-controller="Home" asp-action="Index"> <h4> <b> Rasmus Sträng </b> </h4> </a>
-				<a class="navbar-brand js-scroll-trigger d-none d-sm-block d-md-none" asp-controller="Home" asp-action="Index"> <h4> <b> RS </b> </h4> </a>
-				<a class="navbar-brand js-scroll-trigger d-sm-none" asp-controller="Home" asp-action="Index"> <h4> <b> Rasmus Sträng </b> </h4> </a>
+				<a class="navbar-brand d-none d-lg-block" asp-controller="Home" asp-action="Index"> <h4> <b> Rasmus Sträng </b> </h4> </a>
+				@*		<a class="navbar-brand d-none d-sm-block d-md-none" asp-controller="Home" asp-action="Index"> <h4> <b> RS </b> </h4> </a>*@
+				<a class="navbar-brand d-lg-none" asp-controller="Home" asp-action="Index"> <h4> <b> RS </b> </h4> </a>
+				@*<h3 class="text-white mt-1">|</h3>*@
+				<form asp-controller="Products" asp-action="Index" method="get">
+					<div  class="search input-group mb-1 d-lg-none">
+						<input type="text" name="q" class="form-control no-border rounded-pill bg-transparent font-italic text-white border-0 " autocomplete="off" placeholder="Search products...">
+						<button type="submit" class="btn btn-secondary rounded-circle ml-2"> <i class="fa fa-search"></i> </button>
+					</div>
+				</form>
+
+				@*<h3 class="text-white mt-1">|</h3>*@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
+				<div class="collapse navbar-collapse " id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item ml-auto">
-							<a asp-controller="Home" asp-action="Index" class="nav-link@(activeController == "Home" ? " active" : "")">Home</a> <!-- Funkar????? -->
+							<a asp-controller="Home" asp-action="Index" class="nav-link@(activeController == "Home" ? " active" : "")">Home</a>
 						</li>
 						<li class="nav-item ml-auto">
-							<a asp-controller="Products" asp-action="Index" class="nav-link@(activeController == "Products" ? " active" : "")">Products</a> <!-- Funkar icke -->
+							<a asp-controller="Products" asp-action="Index" class="nav-link@(activeController == "Products" ? " active" : "")">Products</a>
 						</li>
 						<li class="nav-item ml-auto">
-							<a asp-controller="Privacy" asp-action="Index" class="nav-link@(activeController == "Privacy" ? " active" : "")">Privacy</a> <!-- Funkar icke -->
+							<a asp-controller="Categories" asp-action="Index" class="nav-link@(activeController == "Categories" ? " active" : "")">Categories</a>
 						</li>
 					</ul>
 				</div>
 			</div>
+			<form class="d-none d-lg-block" asp-controller="Products" asp-action="Index" method="get">
+				<div  class="search input-group mb-1 mr-auto">
+					<input type="text" name="q" class="form-control no-border rounded-pill bg-transparent font-italic text-white border-0 " autocomplete="off" placeholder="Search products...">
+					<button type="submit" class="btn btn-secondary rounded-circle ml-2"> <i class="fa fa-search"></i> </button>
+				</div>
+			</form>
 		</nav>
 
 		<section class="container" id="about">
@@ -67,7 +83,15 @@
 		<!-- Footer -->
 		<footer class="py-5">
 			<div class="container">
-				<p class="m-0 text-left text-white">Copyright &copy; Rasmus Sträng 2021</p>
+				<ul class="list-group footer-list">
+					<li class="card-link">
+						<a asp-controller="Privacy" asp-action="Index" class="">Privacy</a>
+					</li>
+					<li class="">
+						<p class="m-0">Copyright &copy; Rasmus Sträng 2021</p>
+					</li>
+				</ul>
+
 			</div>
 			<!-- /.container -->
 		</footer>
@@ -80,7 +104,7 @@
 		<script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 		<!-- Custom JavaScript for this theme -->
-		<!-- <script src="~/js/scrolling-nav.js"></script> -->
+		<script src="~/js/scrolling-nav.js"></script>
 		<!-- jquery-bibliotek -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 

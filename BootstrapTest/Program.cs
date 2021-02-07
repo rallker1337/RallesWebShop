@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using RasmusWebShop.ViewModels;
@@ -10,6 +11,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RasmusWebShop.Models;
 using RasmusWebShop.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using RasmusWebShop.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace RasmusWebShop
 {
@@ -17,53 +21,23 @@ namespace RasmusWebShop
 	{
 		public static void Main(string[] args)
 		{
-			using (var context = new ApplicationDbContext())
+			var host = CreateHostBuilder(args).Build();
+			using (var scope = host.Services.CreateScope())
 			{
-				context.Database.Migrate();
+				var serviceProvider = scope.ServiceProvider;
+				try
+				{
+					var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+					var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+					DataInitializer.SeedData(dbContext);
+				}
+				catch (Exception ex)
+				{
+					Debug.WriteLine(ex.Message);
+				}
 			}
 
-			using (var context = new ApplicationDbContext())
-			{
-
-				context.CategoryTypes.Add(new CategoryType
-				{
-					Title = "Clothes"
-				});
-				context.CategoryTypes.Add(new CategoryType
-				{
-					Title = "Decor"
-				});
-				context.Categories.Add(new Category
-				{
-					Title = "Hats"
-				});
-				context.Categories.Add(new Category
-				{
-					Title = "Shirts",
-				});
-				context.Categories.Add(new Category
-				{
-					Title = "Furniture",
-				});
-				context.Categories.Add(new Category
-				{
-					Title = "Others",
-				});
-				context.Categories.Add(new Category
-				{
-					Title = "Brick",
-
-				});
-				context.Products.Add(new Product
-				{
-					Title = "White Tee",
-					Description = "Cut of cloth from the gods",
-					Price = 999.99m
-				});
-
-				context.SaveChanges();
-			}
-			CreateHostBuilder(args).Build().Run();
+			host.Run();
 		}
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>

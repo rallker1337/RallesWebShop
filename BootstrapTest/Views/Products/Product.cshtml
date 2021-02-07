@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@model RasmusWebShop.ViewModels.ProductsProductViewModel
+
+@{
+	var title = Model.Title;
+
+
+	ViewData["Title"] = ": " + title;
+
+}
+<h1>@Model.Category</h1>
+<div class="row info d-flex align-items-center justify-content-center">
+	<div id="product-thumbnail" class="col-lg-6 col-md-8 col-sm-10 shadow m-3 border">
+		<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
+		<h2 class="mt-2 p-2">@Model.Title</h2>
+		<p class="mt-2 p-2">@Model.Description</p>
+		<h4 class="pb-2 pl-2">$ @Model.Price</h4>
+	</div>
+</div>

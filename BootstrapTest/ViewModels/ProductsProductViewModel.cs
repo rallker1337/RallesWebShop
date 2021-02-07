@@ -2,7 +2,8 @@
 
 namespace RasmusWebShop.ViewModels
 {
-	public class Product
+
+	public class ProductsProductViewModel
 	{
 		public int Id { get; set; }
 
@@ -10,8 +11,9 @@ namespace RasmusWebShop.ViewModels
 
 		public string Description { get; set; }
 
-		public decimal Price { get; set; }
+		public float Price { get; set; }
 
-		public List<Category>  CategoryId { get; set; } = new List<Category>();
+		public string Category { get; set; }
+
 	}
 }

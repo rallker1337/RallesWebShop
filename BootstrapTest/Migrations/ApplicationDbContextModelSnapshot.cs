@@ -19,29 +19,25 @@ namespace RasmusWebShop.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RasmusWebShop.ViewModels.Category", b =>
+            modelBuilder.Entity("RasmusWebShop.Data.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("RasmusWebShop.ViewModels.CategoryType", b =>
+            modelBuilder.Entity("RasmusWebShop.Data.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -49,48 +45,28 @@ namespace RasmusWebShop.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("CategoryTypes");
-                });
-
-            modelBuilder.Entity("RasmusWebShop.ViewModels.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("RasmusWebShop.ViewModels.Category", b =>
+            modelBuilder.Entity("RasmusWebShop.Data.Product", b =>
                 {
-                    b.HasOne("RasmusWebShop.ViewModels.Product", null)
-                        .WithMany("CategoryId")
-                        .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("RasmusWebShop.ViewModels.CategoryType", b =>
-                {
-                    b.HasOne("RasmusWebShop.ViewModels.Category", null)
-                        .WithMany("CategoryTypeId")
+                    b.HasOne("RasmusWebShop.Data.Category", "Category")
+                        .WithMany()
                         .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618

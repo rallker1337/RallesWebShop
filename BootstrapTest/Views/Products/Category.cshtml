@@ -1,32 +1,29 @@
-﻿@model RasmusWebShop.ViewModels.ProductsIndexViewModel
+﻿@using Microsoft.AspNetCore.Components.Web
+@model RasmusWebShop.ViewModels.ProductsCategoryViewModel
 
 @{
-	ViewData["Title"] = ": " + "Products";
-	if (Model.q != null)
+	var title = "";
+	foreach (var product in Model.Products)
 	{
-		if(Model.Products.Count != 0)
-		{ 
-			<h1>Search result for: @Model.q</h1>
-			ViewData["Title"] = ": " + Model.q;
-		}
-		else
-		{
-			<h1>No result found for: @Model.q</h1>
-			ViewData["Title"] = ": " + Model.q;
-		}
+		title = product.Category;
+		break;
 	}
-}
 
+	ViewData["Title"] = ": " + title;
+
+}
+<h1>@title</h1>
 <div class="row info d-flex align-items-center justify-content-center">
 	@foreach (var product in Model.Products)
 	{
+		
 		<div id="product-thumbnail" class="col-lg-3 col-md-5 col-sm-10 shadow m-3 border">
 			<a asp-controller="Products" asp-action="Product" asp-route-Id="@product.Id">
 				<h3 class="mt-2">@product.Title</h3>
 				<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
 			</a>
 			<h4>$ @product.Price</h4>
-
+		
 		</div>
 	}
 </div>

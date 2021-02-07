@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 namespace RasmusWebShop.ViewModels
 {
 
-	public class Category
+	public class CategoryViewModel
 	{
 		public int Id { get; set; }
 
 		public string Title { get; set; }
-
-		public List<CategoryType> CategoryTypeId { get; set; } = new List<CategoryType>();
 	}
 }

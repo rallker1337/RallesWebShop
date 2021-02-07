@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using RasmusWebShop.Data;
+using RasmusWebShop.ViewModels;
 
-namespace RasmusWebShop.Data
+namespace RasmusWebShop.Models
 {
-	public class ApplicationDbContext : IdentityDbContext
+	public class ApplicationDbContext : DbContext
 	{
-		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-			: base(options)
+		public ApplicationDbContext()
 		{
 		}
+
+		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+			:base(options)
+		{
+		}
+
+		public DbSet<Product> Products { get; set; }
+		public DbSet<Category> Categories { get; set; }
 	}
 }

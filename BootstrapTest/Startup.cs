@@ -12,6 +12,7 @@ using RasmusWebShop.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RasmusWebShop.Models;
 
 namespace RasmusWebShop
 {
