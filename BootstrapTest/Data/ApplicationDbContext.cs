@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using RasmusWebShop.Data;
 using RasmusWebShop.ViewModels;
 
-namespace RasmusWebShop.Models
+namespace RasmusWebShop.Data
 {
 	public class ApplicationDbContext : DbContext
 	{

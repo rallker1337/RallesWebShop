@@ -48,9 +48,19 @@ input[type='text']::-ms-input-placeholder {
 input[type='text']:-ms-input-placeholder {
 	color: rgba(255, 255, 255, 0.5);
 }
-#product-thumbnail {
+.product-thumbnail {
     background-color: rgba(244, 244, 244, 0.8);
-	border-radius: .4rem;
+    border-radius: .4rem;
+    min-width: 285px;
+    box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.50) !important;
+}
+.edit-text p{
+	margin-bottom: 0 !important;
+}
+.product-thumbnail:hover {
+    background-color: rgba(244, 244, 244, 0.90);
+    border: 1px solid !important;
+    border-color: rgba(0, 0, 0, 0.17) !important;
 }
 section {
     padding: 150px 0;
@@ -68,17 +78,25 @@ footer p {
 }
 
 .navbar-dark {
-  background: linear-gradient(15deg, #ff6600 180%, #ffa836);
+  background: linear-gradient(200deg, #ff6600 30%, #ffa836);
   height: 5em;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.153);
 }
 h2, h3, a {
     color: #ff6600;
 }
-a:hover {
+.smaller-h4 {
+	font-size: 2rem;
+}
+.bigger-h1 {
 	color: #ff6600;
-	text-decoration: underline;
-	text-decoration-color: #ff6600;
+	font-size: 10.5vw;
+}
+
+a:hover {
+    color: #ff6600;
+    text-decoration: underline;
+    text-decoration-color: #ff6600;
 }
 nav .navbar-nav li a{
   font-size: 1rem;

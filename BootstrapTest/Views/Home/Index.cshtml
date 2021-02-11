@@ -1,8 +1,29 @@
-﻿@{
-    ViewData["Title"] = "";
-}
+﻿@model RasmusWebShop.ViewModels.HomeIndexProductsViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+	ViewData["Title"] = "";
+
+}
+<div class="row d-flex align-items-center text-center justify-content-center card-body">
+	<h1 class="bigger-h1">Welcome!</h1>
+</div>
+<div class="row d-flex align-items-center justify-content-center card-body">
+	<h1 class="col-10">Shop now</h1>
+	
+	@foreach (var product in Model.Products)
+	{
+<div class="product-thumbnail col-lg-3 col-md-3 col-sm-3 shadow-sm m-3 border">
+	<a asp-controller="Products" asp-action="Product" asp-route-Id="@product.Id">
+		<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
+		<h3 class="mt-2 p-2">@product.Title</h3>
+	</a>
+	<p class="p-2 d-inline-block">$ @product.Price</p>
+	<a asp-controller="" asp-action="" asp-route-Id="@product.Id">	
+		<button class="btn btn-secondary float-right mb-2 edit-text">
+			<p class="">Edit</p>
+		</button>
+	</a>
+
+</div>
+	}
 </div>

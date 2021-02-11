@@ -15,17 +15,21 @@
 			ViewData["Title"] = ": " + Model.q;
 		}
 	}
+	else
+	{
+		<h1>All products</h1>
+	}
 }
 
 <div class="row info d-flex align-items-center justify-content-center">
 	@foreach (var product in Model.Products)
 	{
-		<div id="product-thumbnail" class="col-lg-3 col-md-5 col-sm-10 shadow m-3 border">
+		<div class="product-thumbnail col-lg-3 col-md-5 col-sm-10 shadow m-3 border">
 			<a asp-controller="Products" asp-action="Product" asp-route-Id="@product.Id">
-				<h3 class="mt-2">@product.Title</h3>
 				<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
+				<h3 class="mt-2 p-2">@product.Title</h3>
 			</a>
-			<h4>$ @product.Price</h4>
+			<p class="p-2">$ @product.Price</p>
 
 		</div>
 	}

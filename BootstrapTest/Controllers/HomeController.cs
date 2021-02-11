@@ -4,8 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using RasmusWebShop.Data;
 using RasmusWebShop.Models;
+using RasmusWebShop.ViewModels;
 
 namespace RasmusWebShop.Controllers
 {
@@ -22,7 +25,33 @@ namespace RasmusWebShop.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
+			var viewModel = new HomeIndexProductsViewModel();
+			Random random = new Random();
+			int selected;
+			int prodCount = 0;
+			viewModel.Products = _dbContext.Products.Include(r => r.Category)
+				.Select(dbProd => new ProductViewModel
+				{
+					Id = dbProd.Id,
+					Title = dbProd.Title,
+					Description = dbProd.Description,
+					Price = dbProd.Price,
+					Category = dbProd.Category.Title
+				}).ToList();
+			var randomProducts = new HomeIndexProductsViewModel();
+			var randomProdcut = new ProductViewModel();
+			for (int i = 0; i < 3;  i++)
+			{
+				selected = random.Next(0, viewModel.Products.Count());
+				randomProdcut = viewModel.Products[selected];
+				viewModel.Products.Remove(viewModel.Products[selected]);
+
+				randomProducts.Products.Add(randomProdcut);
+			}
+
+			viewModel = randomProducts;
+			
+			return View(viewModel);
 		}
 
 

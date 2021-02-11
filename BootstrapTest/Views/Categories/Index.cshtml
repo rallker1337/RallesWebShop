@@ -3,14 +3,14 @@
 @{
 	ViewData["Title"] = ": " + "Categories";
 }
-
-<div class="row info d-flex align-items-center justify-content-center">
+<h1>Categories</h1>
+<div class="row d-flex align-items-center justify-content-center">
 	@foreach(var category in Model.Categories)
 	{
-		<div   id="product-thumbnail" class="text-center col-lg-3 col-md-3 col-sm-9 shadow-sm m-2 border">
+		<div   class="product-thumbnail text-center col-lg-3 col-md-3 col-sm-9 shadow-sm m-3 pt-3 pb-3 border">
 			<a asp-controller="Products" asp-action="Category" asp-route-Id="@category.Id">
 				<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
-				<h2 class="text-uppercase">@category.Title</h2>
+				<h4 class="smaller-h4 text-uppercase p-3">@category.Title</h4>
 			</a>
 		</div>
 
