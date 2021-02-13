@@ -49,8 +49,19 @@ namespace RasmusWebShop.Data
 				{
 					Title = "White T-Shirt",
 					Description = "Cut of cloth from the gods",
-					Price = 99.99f,
+					Price = 99,
 					Category = dbContext.Categories.FirstOrDefault(r=> r.Title == "T-Shirts")
+				});
+			}
+			products = dbContext.Products.FirstOrDefault(r => r.Title == "Black T-Shirt");
+			if (products == null)
+			{
+				dbContext.Products.Add(new Product
+				{
+					Title = "Black T-Shirt",
+					Description = "",
+					Price = 99,
+					Category = dbContext.Categories.FirstOrDefault(r => r.Title == "T-Shirts")
 				});
 			}
 			products = dbContext.Products.FirstOrDefault(r => r.Title == "Black Hoodie");
@@ -59,8 +70,8 @@ namespace RasmusWebShop.Data
 				dbContext.Products.Add(new Product
 				{
 					Title = "Black Hoodie",
-					Description = "Cut of cloth from the gods",
-					Price = 199.99f,
+					Description = null,
+					Price = 299,
 					Category = dbContext.Categories.FirstOrDefault(r => r.Title == "Hoodies")
 				});
 			}
@@ -71,7 +82,7 @@ namespace RasmusWebShop.Data
 				{
 					Title = "Grey Cap",
 					Description = "Cut of cloth from the gods",
-					Price = 79.99f,
+					Price = 79,
 					Category = dbContext.Categories.FirstOrDefault(r => r.Title == "Hats")
 				});
 			}
@@ -82,7 +93,7 @@ namespace RasmusWebShop.Data
 				{
 					Title = "Black Cap",
 					Description = "Cut of cloth from the gods",
-					Price = 79.99f,
+					Price = 79,
 					Category = dbContext.Categories.FirstOrDefault(r => r.Title == "Hats")
 				});
 			}
@@ -93,7 +104,7 @@ namespace RasmusWebShop.Data
 				{
 					Title = "Grey Hoodie",
 					Description = "Cut of cloth from the gods",
-					Price = 79.99f,
+					Price = 299,
 					Category = dbContext.Categories.FirstOrDefault(r => r.Title == "Hoodies")
 				});
 			}
@@ -104,7 +115,7 @@ namespace RasmusWebShop.Data
 				{
 					Title = "White Hoodie",
 					Description = "Cut of cloth from the gods",
-					Price = 79.99f,
+					Price = 299,
 					Category = dbContext.Categories.FirstOrDefault(r => r.Title == "Hoodies")
 				});
 			}

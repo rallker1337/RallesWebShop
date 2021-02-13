@@ -10,6 +10,7 @@ namespace RasmusWebShop.Data
 	{
 		public int Id { get; set; }
 
+		[Required]
 		[MaxLength(30)]
 		[MinLength(2)]
 		public string Title { get; set; }
@@ -18,8 +19,9 @@ namespace RasmusWebShop.Data
 		[MinLength(0)]
 		public string Description { get; set; }
 
+		[Required]
 		[DataType(DataType.Currency)]
-		public float Price { get; set; }
+		public int Price { get; set; }
 
 		public Category Category { get; set; }
 	}

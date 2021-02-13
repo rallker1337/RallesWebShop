@@ -26,9 +26,14 @@ header a, h4 {
     border-bottom: 2px solid white !important;
     margin-top: .3rem;
 }
-button[type="submit"] {
-	margin-left: -50px;
+.input {
+    padding: .6rem;
+    border-bottom: 2px solid rgba(255,102,0, .8) !important;
+	border-left: 2px solid rgba(255,102,0, .8) !important;
+    margin-top: -1.1rem;
+    border-radius: 0;
 }
+
 input[type='text']::placeholder {
 	color: rgba(255, 255, 255, 0.5);
 }
@@ -50,18 +55,57 @@ input[type='text']:-ms-input-placeholder {
 }
 .product-thumbnail {
     background-color: rgba(244, 244, 244, 0.8);
-    border-radius: .4rem;
+    border-radius: .3rem;
     min-width: 285px;
     box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.50) !important;
+}
+.product-thumbnail:hover {
+	background-color: rgba(244, 244, 244, 0.9);
+	border: 1px solid !important;
+	border-color: rgba(0, 0, 0, 0.17) !important;
+}
+.field-validation-error {
+	color: red;
+	padding: 1rem;
+	font-size: .8rem;
+}
+.product-view {
+	background-color: rgba(244, 244, 244, 0.85);
+	border-radius: .4rem;
+	min-width: 285px;
+	box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.50) !important;
+}
+.product-edit-view {
+	background-color: rgba(244, 244, 244, 0.9);
+	border-radius: 0;
+	min-width: 285px;
+	box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.50) !important;
 }
 .edit-text p{
 	margin-bottom: 0 !important;
 }
-.product-thumbnail:hover {
-    background-color: rgba(244, 244, 244, 0.90);
-    border: 1px solid !important;
-    border-color: rgba(0, 0, 0, 0.17) !important;
+
+#title-edit {
+	margin-top: 1rem;
 }
+#description-edit {
+	margin-top: 1rem;
+	min-height: 2rem;
+}
+textarea {
+	min-height: 3.2rem;
+	max-height: 10rem;
+}
+#price-edit {
+	margin-top: 1rem;
+}
+#category-edit {
+	margin-top: 1rem;
+}
+.bigger-text {
+	font-size: 1.2rem;
+}
+
 section {
     padding: 150px 0;
 }
@@ -92,11 +136,28 @@ h2, h3, a {
 	color: #ff6600;
 	font-size: 10.5vw;
 }
-
+.orange {
+    color: #ff6600;
+	margin-left: .4rem;
+	font-size: 1rem;
+}
+.bg-orange {
+    background-color: #ff6600;
+	color: white;
+}
+.bg-orange:hover {
+	color: white;
+    background-color: #EF6000;
+}
 a:hover {
     color: #ff6600;
     text-decoration: underline;
     text-decoration-color: #ff6600;
+}
+.text-id {
+	font-size: .6rem;
+	margin-top: 1rem;
+	margin-bottom: .5rem;
 }
 nav .navbar-nav li a{
   font-size: 1rem;

@@ -9,8 +9,13 @@
 	{
 		<div   class="product-thumbnail text-center col-lg-3 col-md-3 col-sm-9 shadow-sm m-3 pt-3 pb-3 border">
 			<a asp-controller="Products" asp-action="Category" asp-route-Id="@category.Id">
-				<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
-				<h4 class="smaller-h4 text-uppercase p-3">@category.Title</h4>
+				<img src="~/img/category.png" class="img-fluid" alt="Responsive image">
+				<h4 class="smaller-h4 text-uppercase pt-3">@category.Title</h4>
+			</a>
+			<a asp-controller="Categories" asp-action="Edit" asp-route-Id="@category.Id">	
+				<button class="btn btn-secondary float-right edit-text d-inline-block">
+					<p class="">Edit</p>
+				</button>
 			</a>
 		</div>
 

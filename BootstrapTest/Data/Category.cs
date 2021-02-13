@@ -11,6 +11,7 @@ namespace RasmusWebShop.Data
 
 		public int Id { get; set; }
 
+		[Required]
 		[MaxLength(30)]
 		[MinLength(2)]
 		public string Title { get; set; }

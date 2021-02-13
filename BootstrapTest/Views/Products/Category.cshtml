@@ -19,10 +19,15 @@
 		
 		<div class="product-thumbnail col-lg-3 col-md-5 col-sm-10 shadow m-3 border">
 			<a asp-controller="Products" asp-action="Product" asp-route-Id="@product.Id">
-				<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
+				<img src="~/img/product.png" class="img-fluid mt-3" alt="Responsive image">
 				<h3 class="mt-2 p-2">@product.Title</h3>
 			</a>
-			<p class="p-2">$ @product.Price</p>
+			<p class="p-2 d-inline-block">$ @product.Price</p>
+			<a asp-controller="Products" asp-action="Edit" asp-route-Id="@product.Id">	
+				<button class="btn btn-secondary float-right mb-2 edit-text">
+					<p class="">Edit</p>
+				</button>
+			</a>
 		
 		</div>
 	}

@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@model RasmusWebShop.ViewModels.CategoryEditViewModel
+
+@{
+	var title = Model.Title;
+
+
+	ViewData["Title"] = ": Edit " + title;
+
+}
+<h1>Category edit: @title</h1>
+<form method="post" asp-controller="Categories" asp-action="Edit">
+	<div class="row d-flex align-items-center justify-content-center">
+		<div class="product-edit-view col-lg-6 col-md-8 col-sm-10 m-3 border">
+			<img src="~/img/category.png" class="img-fluid col-4 mt-4" alt="Responsive image">
+
+			<div class="title-edit input-group d-inline-block mb-2 mt-3 col-7 mt-2">
+				<label class="orange" asp-for="Title">Title</label>
+				<input type="text" class="input form-control no-border bg-transparent border-0 w-100" asp-for="Title">
+				<span asp-validation-for="Title" class="field-validation-error"></span>
+			</div>
+
+			<div><p class="text-muted text-right text-id">CategoryID: #@Model.Id</p></div>
+		</div>
+		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
+			<button type="submit" class="btn bg-orange">Save changes</button>
+			<button  asp-controller="Categories" asp-action="Index" class="btn btn-secondary">Cancel</button>
+		</div>
+	</div>
+</form>

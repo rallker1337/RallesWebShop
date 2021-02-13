@@ -10,10 +10,27 @@
 }
 <h1>@Model.Category</h1>
 <div class="row info d-flex align-items-center justify-content-center">
-	<div class="product-thumbnail col-lg-6 col-md-8 col-sm-10 shadow m-3 border">
-		<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
+	<div class="product-view col-lg-6 col-md-8 col-sm-10 shadow m-3 border">
+		<img src="~/img/product.png" class="img-fluid d-inline-block mt-3" alt="Responsive image">
 		<h2 class="mt-2 p-2">@Model.Title</h2>
-		<p class="mt-2 p-2">@Model.Description</p>
-		<h4 class="pb-2 pl-2">$ @Model.Price</h4>
+		@if (String.IsNullOrEmpty(Model.Description))
+		{
+			<p class="mt-2 p-2 text-black-50 text-muted">No description...</p>
+		}
+		else
+		{
+			<p class="mt-2 p-2">@Model.Description</p>
+		}
+		<h4 class="mb-2 pl-2 d-inline-block mt-3">$ @Model.Price</h4>
+		<p class="text-muted text-right text-id d-inline-block float-right mt-5">ProductID: #@Model.Id</p>
+	</div>
+	<div class="col-lg-6 col-md-8 col-sm-10 m-3">
+		<a asp-controller="Products" asp-action="Edit" asp-route-Id="@Model.Id">
+			<div class="text-right d-inline-block float-right">
+				<button class="btn btn-secondary edit-text">
+					<p class="">Edit</p>
+				</button>
+			</div>
+		</a>
 	</div>
 </div>

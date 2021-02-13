@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -63,6 +64,41 @@ namespace RasmusWebShop.Controllers
 			viewModel.Description = dbProduct.Description;
 			viewModel.Price = dbProduct.Price;
 			viewModel.Category = dbProduct.Category.Title;
+
+			return View(viewModel);
+		}
+
+		public IActionResult Edit(int Id)
+		{
+			var viewModel = new ProductEditViewModel();
+
+			var dbProduct = _dbContext.Products.Include(r => r.Category).First(r => r.Id == Id);
+
+			viewModel.Id = dbProduct.Id;
+			viewModel.Title = dbProduct.Title;
+			viewModel.Description = dbProduct.Description;
+			viewModel.Price = dbProduct.Price;
+			viewModel.Category = dbProduct.Category.Title;
+
+			return View(viewModel);
+
+		}
+		[HttpPost]
+		public IActionResult Edit(ProductEditViewModel viewModel, int Id)
+		{
+			if (ModelState.IsValid)
+			{
+				var dbProduct = _dbContext.Products.Include(r => r.Category).First(r => r.Id == Id);
+
+				dbProduct.Id = viewModel.Id;
+				dbProduct.Title = viewModel.Title;
+				dbProduct.Description = viewModel.Description;
+				dbProduct.Price = viewModel.Price;
+				dbProduct.Category = _dbContext.Categories.First(r=>r.Title == viewModel.Category);
+				_dbContext.SaveChanges();
+
+				return RedirectToAction("Product", viewModel);
+			}
 
 			return View(viewModel);
 		}

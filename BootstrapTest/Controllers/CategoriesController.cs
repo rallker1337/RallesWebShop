@@ -32,5 +32,34 @@ namespace RasmusWebShop.Controllers
 
 			return View(viewModel);
 		}
+		public IActionResult Edit(int Id)
+		{
+			var viewModel = new CategoryEditViewModel();
+
+			var dbProduct = _dbContext.Categories.First(r => r.Id == Id);
+
+			viewModel.Id = dbProduct.Id;
+			viewModel.Title = dbProduct.Title;
+
+			return View(viewModel);
+
+		}
+		[HttpPost]
+		public IActionResult Edit(CategoryEditViewModel viewModel, int Id)
+		{
+			if (ModelState.IsValid)
+			{
+				var dbCategory = _dbContext.Categories.First(r => r.Id == Id);
+
+				dbCategory.Id = viewModel.Id;
+				dbCategory.Title = viewModel.Title;
+
+				_dbContext.SaveChanges();
+
+				return RedirectToAction("Index");
+			}
+
+			return View(viewModel);
+		}
 	}
 }

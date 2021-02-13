@@ -1,19 +1,46 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
-@model RasmusWebShop.ViewModels.ProductsProductViewModel
+@model RasmusWebShop.ViewModels.ProductEditViewModel
 
 @{
 	var title = Model.Title;
 
 
-	ViewData["Title"] = ": " + title;
+	ViewData["Title"] = ": Edit " + title;
 
 }
-<h1>@Model.Category</h1>
-<div class="row info d-flex align-items-center justify-content-center">
-	<div class="product-thumbnail col-lg-6 col-md-8 col-sm-10 shadow m-3 border">
-		<img src="~/img/underconstruction.gif" class="img-fluid" alt="Responsive image">
-		<h2 class="mt-2 p-2">@Model.Title</h2>
-		<p class="mt-2 p-2">@Model.Description</p>
-		<h4 class="pb-2 pl-2">$ @Model.Price</h4>
+<h1>Product edit: @title</h1>
+<form method="post" asp-controller="Products" asp-action="Edit">
+	<div class="row d-flex align-items-center justify-content-center">
+		<div class="product-edit-view col-lg-6 col-md-8 col-sm-10 m-3 border">
+			<img src="~/img/product.png" class="img-fluid mt-3 mb-3" style="height: 10rem; width: 10rem;"alt="Responsive image">
+
+			<div class="title-edit input-group d-block mb-2">
+				<label class="orange" asp-for="Title">Title</label>
+				<input type="text" class="input form-control no-border bg-transparent border-0 w-100" asp-for="Title">
+				<span asp-validation-for="Title" class="field-validation-error"></span>
+			</div>
+			<div class="description-edit input-group d-block mb-2">
+				<label class="orange" asp-for="Description">Description</label>
+				<textarea rows="5" cols="30" rows="5" class="input form-control no-border bg-transparent border-0 w-100" asp-for="Description"></textarea>
+				<span asp-validation-for="Description" class="field-validation-error"></span>
+			</div>
+			<div class="price-edit input-group d-block mb-2">
+				<label class="orange" asp-for="Price">Price</label>
+				<input type="text" class="input form-control no-border bg-transparent border-0 w-100" asp-for="Price">
+				<span asp-validation-for="Price" class="field-validation-error"></span>
+			</div>
+			<div class="category-edit input-group d-block mb-2">
+				<label class="orange" asp-for="Category">Category</label>
+				<input type="text" class="input form-control no-border bg-transparent border-0 w-100" asp-for="Category">
+				<span asp-validation-for="Category" class="field-validation-error"></span>
+			</div>
+
+
+			<div><p class="text-muted text-right text-id">ProductID: #@Model.Id</p></div>
+		</div>
+		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
+			<button type="submit" asp-route-Id="@Model.Id" class="btn bg-orange">Save changes</button>
+			<button  asp-controller="Products" asp-action="Product" asp-route-Id="@Model.Id" class="btn btn-secondary">Cancel</button>
+		</div>
 	</div>
-</div>
+</form>
