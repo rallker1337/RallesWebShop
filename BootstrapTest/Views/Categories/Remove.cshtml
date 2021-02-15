@@ -17,9 +17,9 @@
 		<div class="product-edit-view col-lg-6 col-md-8 col-sm-10 mb-3 mt-5 pt-5 pb-5 border">
 			@if (Model.ContainsProducts == true)
 			{
-				<div class="d-inline-block">
+				<div class="d-inline-block text-center">
 					<h3 class="d-inline-block">@Model.Title</h3>
-					<p class="d-inline-block">: contains <h3 class="d-inline-block">(@Model.ProductsInCategory.Count)</h3> products, removing this category will remove the associated products as well...</p>
+					<p class="d-inline-block">: contains <h3 class="d-inline-block smaller-h4">(@Model.ProductsInCategory.Count)</h3> products, removing this category will remove the associated products as well...</p>
 				</div>
 				foreach (var prod in Model.ProductsInCategory)
 				{
@@ -28,7 +28,7 @@
 			}
 			<div class="title-edit d-block mb-2 mt-3 text-center">
 				<p class="d-inline-block">Do you want to remove </p>
-				<h2 class="d-inline-block">@Model.Title?</h2>
+				<h3 class="d-inline-block">@Model.Title?</h3>
 			</div>
 		</div>
 		<div class="col-lg-6 col-md-8 col-sm-10 m-3">

@@ -132,7 +132,7 @@ namespace RasmusWebShop.Controllers
 			return View(viewModel);
 		}
 
-		public IActionResult Remove(int Id) // fixa delete/remove
+		public IActionResult Remove(int Id) 
 		{
 			var dbProduct = _dbContext.Products.FirstOrDefault(r => r.Id == Id);
 			var viewModel = new ProductRemoveViewModel();
@@ -143,7 +143,7 @@ namespace RasmusWebShop.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Remove(ProductRemoveViewModel viewModel, int Id) // fixa delete/remove
+		public IActionResult Remove(ProductRemoveViewModel viewModel, int Id) 
 		{
 			var dbProduct = _dbContext.Products.FirstOrDefault(r => r.Id == Id);
 			if (ModelState.IsValid)
