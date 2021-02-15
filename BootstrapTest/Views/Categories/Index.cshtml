@@ -3,6 +3,10 @@
 @{
 	ViewData["Title"] = ": " + "Categories";
 }
+<ol class="breadcrumb bg-transparent">
+	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+	<li class="breadcrumb-item active"><a href="#">Categories</a></li>
+</ol>
 <h1>Categories</h1>
 <div class="row d-flex align-items-center justify-content-center">
 	@foreach(var category in Model.Categories)

@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@model RasmusWebShop.ViewModels.CategoryRemoveViewModel
+
+@{
+
+	ViewData["Title"] = ": Remove category";
+	string prodIds = "";
+}
+<ol class="breadcrumb bg-transparent">
+	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+	<li class="breadcrumb-item"><a asp-controller="Categories" asp-action="Index">Products</a></li>
+	<li class="breadcrumb-item disabled"><a href="#">Remove category</a></li>
+</ol>
+<h1>Remove product</h1>
+<form method="post" asp-controller="Categories" asp-action="Remove">
+	<div class="row d-flex align-items-center justify-content-center">
+		<div class="product-edit-view col-lg-6 col-md-8 col-sm-10 mb-3 mt-5 pt-5 pb-5 border">
+			@if (Model.ContainsProducts == true)
+			{
+				<div class="d-inline-block">
+					<h3 class="d-inline-block">@Model.Title</h3>
+					<p class="d-inline-block">: contains <h3 class="d-inline-block">(@Model.ProductsInCategory.Count)</h3> products, removing this category will remove the associated products as well...</p>
+				</div>
+				foreach (var prod in Model.ProductsInCategory)
+				{
+					prodIds += prod.Id + ":";
+				}
+			}
+			<div class="title-edit d-block mb-2 mt-3 text-center">
+				<p class="d-inline-block">Do you want to remove </p>
+				<h2 class="d-inline-block">@Model.Title?</h2>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
+			<button type="submit" asp-route-hasProducts="@Model.ContainsProducts" asp-route-ProductsInCategory="@prodIds" class="btn bg-orange">Remove</button>
+			<a asp-controller="Categories" asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-secondary">Cancel</a>
+		</div>
+	</div>
+</form>

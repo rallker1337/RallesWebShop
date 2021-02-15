@@ -1,39 +1,33 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
-@model RasmusWebShop.ViewModels.CategoryEditViewModel
+@model RasmusWebShop.ViewModels.CategoryNewViewModel
 
 @{
 	var title = Model.Title;
 
 
-	ViewData["Title"] = ": Edit " + title;
+	ViewData["Title"] = ": New";
 
 }
 <ol class="breadcrumb bg-transparent">
 	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
 	<li class="breadcrumb-item"><a asp-controller="Categories" asp-action="Index">Categories</a></li>
-	<li class="breadcrumb-item disabled"><a href="#">Edit</a></li>
+	<li class="breadcrumb-item disabled"><a href="#">New</a></li>
 </ol>
-<h1>Category edit: @title</h1>
-<form method="post" asp-controller="Categories" asp-action="Edit">
+<h1>New category</h1>
+<form method="post" asp-controller="Categories" asp-action="New">
 	<div class="row d-flex align-items-center justify-content-center">
-		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
-			<a asp-controller="Categories" asp-action="Remove" asp-route-Id="@Model.Id" class="btn btn-danger float-right">Remove</a>
-		</div>
 		<div class="product-edit-view col-lg-6 col-md-8 col-sm-10 mb-3 mt-5 border">
-			<img src="~/img/category.png" class="img-fluid col-4 mt-3 pb-4" alt="Responsive image">
-
 			<div class="title-edit input-group d-inline-block mb-5 mt-5 col-7 mt-5 ml-4">
 				<label class="orange pt-3" asp-for="Title">Title</label>
 				<input type="text" class=" bigger-text input form-control no-border bg-transparent border-0 w-100" asp-for="Title">
 				<span asp-validation-for="Title" class="field-validation-error"></span>
 			</div>
 
-			<div>
-				<p class="text-muted text-right text-id">CategoryID: #@Model.Id</p></div>
+			<div><p class="text-muted text-right text-id">CategoryID: #@Model.Id</p></div>
 		</div>
 		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
 			<button type="submit" class="btn bg-orange">Save changes</button>
-			<button asp-controller="Categories" asp-action="Index" class="btn btn-secondary">Cancel</button>
+			<button  asp-controller="Categories" asp-action="Index" class="btn btn-secondary">Cancel</button>
 		</div>
 	</div>
 </form>

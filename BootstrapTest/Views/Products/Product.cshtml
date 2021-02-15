@@ -8,6 +8,11 @@
 	ViewData["Title"] = ": " + title;
 
 }
+<ol class="breadcrumb bg-transparent">
+	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
+	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Product">@Model.Title</a></li>
+</ol>
 <h1>@Model.Category</h1>
 <div class="row info d-flex align-items-center justify-content-center">
 	<div class="product-view col-lg-6 col-md-8 col-sm-10 shadow m-3 border">

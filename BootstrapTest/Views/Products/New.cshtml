@@ -1,32 +1,22 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
-@model RasmusWebShop.ViewModels.ProductEditViewModel
+@model RasmusWebShop.ViewModels.ProductNewViewModel
 
 @{
-	var title = Model.Title;
 
-
-	ViewData["Title"] = ": Edit " + title;
+	ViewData["Title"] = ": New product";
 
 }
 <ol class="breadcrumb bg-transparent">
 	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
 	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
-	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Product" asp-route-Id="@Model.Id">@Model.Title</a></li>
-	<li class="breadcrumb-item disabled"><a href="#">Edit</a></li>
+	<li class="breadcrumb-item disabled"><a href="#">New product</a></li>
 </ol>
-<h1>Product edit: @title</h1>
-
-
-<form method="post" asp-controller="Products" asp-action="Edit">
+<h1>New product</h1>
+<form method="post" asp-controller="Products" asp-action="New">
 	<div class="row d-flex align-items-center justify-content-center">
-		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
-			<a asp-controller="Products" asp-action="Remove" asp-route-Id="@Model.Id" class="btn btn-danger float-right">Remove</a>
-		</div>
 		<div class="product-edit-view col-lg-6 col-md-8 col-sm-10 m-3 border">
 
-			<img src="~/img/product.png" class="img-fluid mt-3 mb-3" style="height: 10rem; width: 10rem;"alt="Responsive image">
-
-			<div class="title-edit input-group d-block mb-2">
+			<div class="title-edit input-group d-block mb-2 mt-3">
 				<label class="orange" asp-for="Title">Title</label>
 				<input type="text" class="input form-control no-border bg-transparent border-0 w-100" asp-for="Title">
 				<span asp-validation-for="Title" class="field-validation-error"></span>
@@ -46,14 +36,10 @@
 				<select class="input form-control no-border bg-transparent border-0 w-100" asp-items="Model.Categories" asp-for="Category"></select>
 				@*<span asp-validation-for="Category" class="field-validation-error"></span>*@
 			</div>
-
-
-			<div>
-				<p class="text-muted text-right text-id">ProductID: #@Model.Id</p></div>
 		</div>
 		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
-			<button type="submit" asp-route-Id="@Model.Id" class="btn bg-orange">Save changes</button>
-			<button asp-controller="Products" asp-action="Product" asp-route-Id="@Model.Id" class="btn btn-secondary">Cancel</button>
+			<button type="submit" class="btn bg-orange">Add product</button>
+			<button  asp-controller="Products" asp-action="Index" class="btn btn-secondary">Cancel</button>
 		</div>
 	</div>
 </form>

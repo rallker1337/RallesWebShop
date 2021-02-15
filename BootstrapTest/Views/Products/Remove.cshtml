@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@model RasmusWebShop.ViewModels.ProductRemoveViewModel
+
+@{
+
+	ViewData["Title"] = ": Remove product";
+
+}
+<ol class="breadcrumb bg-transparent">
+	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
+	<li class="breadcrumb-item disabled"><a href="#">Remove product</a></li>
+</ol>
+<h1>Remove product</h1>
+<form method="post" asp-controller="Products" asp-action="Remove">
+	<div class="row d-flex align-items-center justify-content-center">
+		<div class="product-edit-view col-lg-6 col-md-8 col-sm-10 mb-3 mt-5 pt-5 pb-5 border">
+
+			<div class="title-edit d-block mb-2 mt-3 text-center">
+				<p class="d-inline-block">Do you want to remove </p>
+				<h2 class="d-inline-block">@Model.Title?</h2>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
+			<button type="submit" class="btn bg-orange">Remove</button>
+			<a asp-controller="Products" asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-secondary">Cancel</a>
+		</div>
+	</div>
+</form>

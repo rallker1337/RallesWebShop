@@ -12,6 +12,11 @@
 	ViewData["Title"] = ": " + title;
 
 }
+<ol class="breadcrumb bg-transparent">
+	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+	<li class="breadcrumb-item"><a asp-controller="Categories" asp-action="Index">Categories</a></li>
+	<li class="breadcrumb-item"><a href="#">@title</a></li>
+</ol>
 <h1>@title</h1>
 <div class="row info d-flex align-items-center justify-content-center">
 	@foreach (var product in Model.Products)

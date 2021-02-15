@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RasmusWebShop.Data;
-using RasmusWebShop.Models;
 using RasmusWebShop.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RasmusWebShop.Controllers
 {
@@ -63,7 +60,11 @@ namespace RasmusWebShop.Controllers
 			viewModel.Title = dbProduct.Title;
 			viewModel.Description = dbProduct.Description;
 			viewModel.Price = dbProduct.Price;
-			viewModel.Category = dbProduct.Category.Title;
+			if (viewModel.Category != null)
+			{
+				viewModel.Category = dbProduct.Category.Title;
+			}
+
 
 			return View(viewModel);
 		}
@@ -78,10 +79,10 @@ namespace RasmusWebShop.Controllers
 			viewModel.Title = dbProduct.Title;
 			viewModel.Description = dbProduct.Description;
 			viewModel.Price = dbProduct.Price;
-			viewModel.Category = dbProduct.Category.Title;
+			viewModel.Category = dbProduct.Category.Id;
+			viewModel.Categories = GetAllCategories();
 
 			return View(viewModel);
-
 		}
 		[HttpPost]
 		public IActionResult Edit(ProductEditViewModel viewModel, int Id)
@@ -90,17 +91,80 @@ namespace RasmusWebShop.Controllers
 			{
 				var dbProduct = _dbContext.Products.Include(r => r.Category).First(r => r.Id == Id);
 
-				dbProduct.Id = viewModel.Id;
 				dbProduct.Title = viewModel.Title;
 				dbProduct.Description = viewModel.Description;
 				dbProduct.Price = viewModel.Price;
-				dbProduct.Category = _dbContext.Categories.First(r=>r.Title == viewModel.Category);
+				dbProduct.Category = _dbContext.Categories.First(r => r.Id == viewModel.Category);
+
 				_dbContext.SaveChanges();
 
 				return RedirectToAction("Product", viewModel);
 			}
 
+			viewModel.Categories = GetAllCategories();
 			return View(viewModel);
+		}
+		public IActionResult New()
+		{
+			var viewModel = new ProductNewViewModel();
+			viewModel.Categories = GetAllCategories();
+
+			return View(viewModel);
+		}
+		[HttpPost]
+		public IActionResult New(ProductNewViewModel viewModel)
+		{
+			if (ModelState.IsValid)
+			{
+				var dbProduct = new Product();
+				_dbContext.Products.Add(dbProduct);
+				dbProduct.Id = viewModel.Id;
+				dbProduct.Title = viewModel.Title;
+				dbProduct.Description = viewModel.Description;
+				dbProduct.Price = viewModel.Price;
+				dbProduct.Category = _dbContext.Categories.First(r => r.Id == viewModel.Category);
+				_dbContext.SaveChanges();
+
+				return RedirectToAction("Index");
+			}
+
+			viewModel.Categories = GetAllCategories();
+			return View(viewModel);
+		}
+
+		public IActionResult Remove(int Id) // fixa delete/remove
+		{
+			var dbProduct = _dbContext.Products.FirstOrDefault(r => r.Id == Id);
+			var viewModel = new ProductRemoveViewModel();
+			viewModel.Id = dbProduct.Id;
+			viewModel.Title = dbProduct.Title;
+
+			return View(viewModel);
+		}
+
+		[HttpPost]
+		public IActionResult Remove(ProductRemoveViewModel viewModel, int Id) // fixa delete/remove
+		{
+			var dbProduct = _dbContext.Products.FirstOrDefault(r => r.Id == Id);
+			if (ModelState.IsValid)
+			{
+				_dbContext.Products.Remove(dbProduct);
+				_dbContext.SaveChanges();
+				return RedirectToAction("Index");
+			}
+
+			return View(viewModel);
+		}
+		private List<SelectListItem> GetAllCategories()
+		{
+			var list = new List<SelectListItem>();
+			list.AddRange(_dbContext.Categories.Select(r => new SelectListItem
+			{
+				Value = r.Id.ToString(),
+				Text = r.Title
+			}));
+
+			return list;
 		}
 	}
 }

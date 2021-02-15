@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RasmusWebShop.ViewModels
 {
-	public class CategoryEditViewModel
+	public class CategoryNewViewModel
 	{
 		public int Id { get; set; }
 
