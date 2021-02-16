@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -17,8 +18,8 @@ namespace RasmusWebShop.Controllers
 		private readonly ILogger<HomeController> _logger;
 
 
-		public HomeController(ApplicationDbContext dbContext, ILogger<HomeController> logger)
-			: base(dbContext)
+		public HomeController(ApplicationDbContext dbContext, ILogger<HomeController> logger, UserManager<IdentityUser> userManager)
+			: base(dbContext, userManager)
 		{
 			_logger = logger;
 		}

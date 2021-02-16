@@ -13,5 +13,8 @@ namespace RasmusWebShop.ViewModels
 
 		public string Title { get; set; }
 
+		public int CategoryId { get; set; }
+
+		public string Category { get; set; }
 	}
 }

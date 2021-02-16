@@ -11,9 +11,10 @@
 <ol class="breadcrumb bg-transparent">
 	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
 	<li class="breadcrumb-item"><a asp-controller="Categories" asp-action="Index">Categories</a></li>
+	<li class="breadcrumb-item disabled"><a asp-controller="Products" asp-action="Category" asp-route-Id="@Model.Id">@Model.Title</a></li>
 	<li class="breadcrumb-item disabled"><a href="#">Edit</a></li>
 </ol>
-<h1>Category edit: @title</h1>
+<h1>Edit @title</h1>
 <form method="post" asp-controller="Categories" asp-action="Edit">
 	<div class="row d-flex align-items-center justify-content-center">
 		<div class="col-lg-6 col-md-8 col-sm-10 m-3">

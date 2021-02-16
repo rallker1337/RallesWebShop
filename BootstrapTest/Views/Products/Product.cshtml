@@ -11,6 +11,7 @@
 <ol class="breadcrumb bg-transparent">
 	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
 	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
+	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Category" asp-route-Id="@Model.CategoryId">@Model.Category</a></li>
 	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Product">@Model.Title</a></li>
 </ol>
 <h1>@Model.Category</h1>

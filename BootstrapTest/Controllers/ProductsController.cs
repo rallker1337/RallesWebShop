@@ -7,6 +7,7 @@ using RasmusWebShop.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace RasmusWebShop.Controllers
 {
@@ -15,8 +16,8 @@ namespace RasmusWebShop.Controllers
 		private readonly ILogger<HomeController> _logger;
 
 
-		public ProductsController(ApplicationDbContext dbContext, ILogger<HomeController> logger)
-			: base(dbContext)
+		public ProductsController(ApplicationDbContext dbContext, ILogger<HomeController> logger, UserManager<IdentityUser> userManager)
+			: base(dbContext, userManager)
 		{
 			_logger = logger;
 		}
@@ -61,11 +62,8 @@ namespace RasmusWebShop.Controllers
 			viewModel.Title = dbProduct.Title;
 			viewModel.Description = dbProduct.Description;
 			viewModel.Price = dbProduct.Price;
-			if (viewModel.Category != null)
-			{
-				viewModel.Category = dbProduct.Category.Title;
-			}
-
+			viewModel.Category = dbProduct.Category.Title;
+			viewModel.CategoryId = dbProduct.Category.Id;
 
 			return View(viewModel);
 		}
@@ -83,6 +81,7 @@ namespace RasmusWebShop.Controllers
 			viewModel.Price = dbProduct.Price;
 			viewModel.Category = dbProduct.Category.Id;
 			viewModel.Categories = GetAllCategories();
+			viewModel.CategortyTitle = dbProduct.Category.Title;
 
 			return View(viewModel);
 		}
@@ -139,10 +138,12 @@ namespace RasmusWebShop.Controllers
 		[Authorize(Roles="Admin, ProductManager")]
 		public IActionResult Remove(int Id) 
 		{
-			var dbProduct = _dbContext.Products.FirstOrDefault(r => r.Id == Id);
+			var dbProduct = _dbContext.Products.Include(r=>r.Category).FirstOrDefault(r => r.Id == Id);
 			var viewModel = new ProductRemoveViewModel();
 			viewModel.Id = dbProduct.Id;
 			viewModel.Title = dbProduct.Title;
+			viewModel.Category = dbProduct.Category.Title;
+			viewModel.CategoryId = dbProduct.Category.Id;
 
 			return View(viewModel);
 		}

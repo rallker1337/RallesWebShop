@@ -29,7 +29,6 @@ namespace RasmusWebShop.ViewModels
 
 		public List<SelectListItem> Categories { get; set; }
 
-		public int SelectedCategoryId { get; set; }
-
+		public string CategortyTitle { get; set; }
 	}
 }

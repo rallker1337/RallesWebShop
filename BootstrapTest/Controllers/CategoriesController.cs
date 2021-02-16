@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -16,9 +17,8 @@ namespace RasmusWebShop.Controllers
 	{
 		private readonly ILogger<HomeController> _logger;
 
-
-		public CategoriesController(ApplicationDbContext dbContext, ILogger<HomeController> logger)
-			: base(dbContext)
+		public CategoriesController(ApplicationDbContext dbContext, ILogger<HomeController> logger, UserManager<IdentityUser> userManager)
+			: base(dbContext, userManager)
 		{
 			_logger = logger;
 		}

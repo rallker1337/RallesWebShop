@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using RasmusWebShop.Data;
 using RasmusWebShop.Models;
 
@@ -8,9 +9,12 @@ namespace RasmusWebShop.Controllers
 	{
 		protected readonly ApplicationDbContext _dbContext;
 
-		public BaseController(ApplicationDbContext dbContext)
+		protected readonly UserManager<IdentityUser> _userManager;
+
+		public BaseController(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager)
 		{
 			_dbContext = dbContext;
+			_userManager = userManager;
 		}
 	}
 }
