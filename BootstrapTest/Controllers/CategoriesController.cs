@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -32,6 +33,8 @@ namespace RasmusWebShop.Controllers
 
 			return View(viewModel);
 		}
+
+		[Authorize(Roles = "Admin, ProductManager")]
 		public IActionResult Edit(int Id)
 		{
 			var viewModel = new CategoryEditViewModel();
@@ -61,6 +64,8 @@ namespace RasmusWebShop.Controllers
 
 			return View(viewModel);
 		}
+
+		[Authorize(Roles = "Admin, ProductManager")]
 		public IActionResult New()
 		{
 			var viewModel = new CategoryNewViewModel();
@@ -83,6 +88,8 @@ namespace RasmusWebShop.Controllers
 
 			return View(viewModel);
 		}
+
+		[Authorize(Roles = "Admin, ProductManager")]
 		public IActionResult Remove(int Id)
 		{
 			var viewModel = new CategoryRemoveViewModel();

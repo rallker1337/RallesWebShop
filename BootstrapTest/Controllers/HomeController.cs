@@ -25,7 +25,7 @@ namespace RasmusWebShop.Controllers
 
 		public IActionResult Index()
 		{
-			var viewModel = new HomeIndexProductsViewModel();
+			var viewModel = new HomeIndexViewModel();
 			Random random = new Random();
 			int selected;
 			int prodCount = 0;
@@ -38,7 +38,7 @@ namespace RasmusWebShop.Controllers
 					Price = dbProd.Price,
 					Category = dbProd.Category.Title
 				}).ToList();
-			var randomProducts = new HomeIndexProductsViewModel();
+			var randomProducts = new HomeIndexViewModel();
 			var randomProdcut = new ProductViewModel();
 			for (int i = 0; i < 3;  i++)
 			{
@@ -48,8 +48,14 @@ namespace RasmusWebShop.Controllers
 
 				randomProducts.Products.Add(randomProdcut);
 			}
-
 			viewModel = randomProducts;
+			viewModel.Categories = _dbContext.Categories.Select(dbCat => new CategoryViewModel
+			{
+				Id = dbCat.Id,
+				Title = dbCat.Title,
+			}).ToList();
+
+
 			
 			return View(viewModel);
 		}

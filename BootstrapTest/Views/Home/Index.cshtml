@@ -1,4 +1,4 @@
-﻿@model RasmusWebShop.ViewModels.HomeIndexProductsViewModel
+﻿@model RasmusWebShop.ViewModels.HomeIndexViewModel
 
 @{
 	ViewData["Title"] = "";
@@ -8,22 +8,29 @@
 	<h1 class="bigger-h1">Welcome to Rasmus web shop</h1>
 </div>
 <div class="row d-flex align-items-center justify-content-center card-body">
-	<h1 class="col-10">Shop now</h1>
+	<h1 class="col-10 pt-5 pb-5 text-left">Shop now</h1>
 	
 	@foreach (var product in Model.Products)
 	{
-<div class="product-thumbnail col-lg-3 col-md-3 col-sm-3 shadow-sm m-3 border">
-	<a asp-controller="Products" asp-action="Product" asp-route-Id="@product.Id">
-		<img src="~/img/product.png" class="img-fluid mt-3" alt="Responsive image">
-		<h3 class="mt-2 p-2">@product.Title</h3>
-	</a>
-	<p class="p-2 d-inline-block">$ @product.Price</p>
-	<a asp-controller="Products" asp-action="Edit" asp-route-Id="@product.Id">	
-		<button class="btn btn-secondary float-right mb-2 edit-text">
-			<p class="">Edit</p>
-		</button>
-	</a>
-
-</div>
+	<div class="product-thumbnail col-lg-3 col-md-3 col-sm-3 shadow-sm m-3 border">
+		<a asp-controller="Products" asp-action="Product" asp-route-Id="@product.Id">
+			<img src="~/img/product.png" class="img-fluid mt-3" alt="Responsive image">
+			<h3 class="mt-2 p-2">@product.Title</h3>
+		</a>
+		<p class="p-2 d-inline-block">$ @product.Price</p>
+		<a asp-controller="Products" asp-action="Edit" asp-route-Id="@product.Id">	
+			<button class="btn btn-secondary float-right mb-2 edit-text">
+				<p class="">Edit</p>
+			</button>
+		</a>
+	</div>
 	}
+	<h1 class="col-10 pt-5 pb-5 text-left">Categories</h1>
+	@foreach (var categorie in Model.Categories)
+	{
+		<div class="p-2 mt-3">
+			<a asp-controller="Products" asp-action="Category" asp-route-Id="@categorie.Id" class="btn bg-orange rounded-pill shadow-sm"><h4 class="m-1">@categorie.Title</h4></a>
+		</div>
+	}
+
 </div>

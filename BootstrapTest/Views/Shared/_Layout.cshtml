@@ -62,13 +62,14 @@
 				<div class="collapse navbar-collapse " id="navbarResponsive">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item ml-auto">
-							<a asp-controller="Home" asp-action="Index" class="nav-link@(activeController == "Home" ? " active" : "")">Home</a>
-						</li>
-						<li class="nav-item ml-auto">
 							<a asp-controller="Products" asp-action="Index" class="nav-link@(activeController == "Products" ? " active" : "")">Products</a>
 						</li>
 						<li class="nav-item ml-auto">
 							<a asp-controller="Categories" asp-action="Index" class="nav-link@(activeController == "Categories" ? " active" : "")">Categories</a>
+						</li>
+						<li class="ml-auto">
+							<partial name="_LoginPartial"  />
+							@*<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand nav-link@(activeController == "Identity" ? " active" : "")"><i class="bi bi-box-arrow-in-right"></i></a>*@
 						</li>
 					</ul>
 				</div>
@@ -83,7 +84,7 @@
 		
 
 
-		<section class="container" id="about">
+		<section class="container sec" id="about">
 			<div class="float-right d-inline-block">
 				<a class="btn bg-orange" asp-controller="Categories" asp-action="New">New category<i class="bi bi-plus-square add-icon float-none"></i></a>
 				<a class="btn bg-orange" asp-controller="Products" asp-action="New">New product<i class="bi bi-plus-square add-icon"></i></a>
@@ -92,7 +93,7 @@
 		</section>
 
 		<!-- Footer -->
-		<footer class="py-5">
+		<footer class="py-5 mt-auto">
 			<div class="container">
 				<ul class="list-group footer-list">
 					<li class="card-link">

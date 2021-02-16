@@ -6,6 +6,7 @@ using RasmusWebShop.Data;
 using RasmusWebShop.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RasmusWebShop.Controllers
 {
@@ -69,6 +70,7 @@ namespace RasmusWebShop.Controllers
 			return View(viewModel);
 		}
 
+		[Authorize(Roles = "Admin, ProductManager")]
 		public IActionResult Edit(int Id)
 		{
 			var viewModel = new ProductEditViewModel();
@@ -104,6 +106,8 @@ namespace RasmusWebShop.Controllers
 			viewModel.Categories = GetAllCategories();
 			return View(viewModel);
 		}
+
+		[Authorize(Roles = "Admin, ProductManager")]
 		public IActionResult New()
 		{
 			var viewModel = new ProductNewViewModel();
@@ -132,6 +136,7 @@ namespace RasmusWebShop.Controllers
 			return View(viewModel);
 		}
 
+		[Authorize(Roles="Admin, ProductManager")]
 		public IActionResult Remove(int Id) 
 		{
 			var dbProduct = _dbContext.Products.FirstOrDefault(r => r.Id == Id);

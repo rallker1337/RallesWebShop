@@ -27,7 +27,7 @@ namespace RasmusWebShop
 				var serviceProvider = scope.ServiceProvider;
 				var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 				var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
-				DataInitializer.SeedData(dbContext);
+				DataInitializer.SeedData(dbContext, userManager);
 			}
 
 			host.Run();

@@ -11,12 +11,57 @@ namespace RasmusWebShop.Data
 {
 	public class DataInitializer
 	{
-		public static void SeedData(ApplicationDbContext dbContext)
+		public static void SeedData(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager)
 		{
 			dbContext.Database.Migrate();
 
 			SeedCategories(dbContext);
 			SeedProducts(dbContext);
+			SeedRoles(dbContext);
+			SeedUsers(userManager);
+		}
+
+		private static void SeedRoles(ApplicationDbContext dbContext)
+		{
+			var role = dbContext.Roles.FirstOrDefault(r => r.Name == "Admin");
+			if (role == null)
+			{
+				dbContext.Roles.Add(new IdentityRole
+				{
+					Name = "Admin",
+					NormalizedName = "Admin"
+				});
+			}
+			role = dbContext.Roles.FirstOrDefault(r => r.Name == "ProductManager");
+			if (role == null)
+			{
+				dbContext.Roles.Add(new IdentityRole
+				{
+					Name = "ProductManager",
+					NormalizedName = "ProductManager"
+				});
+			}
+			dbContext.SaveChanges();
+		}
+
+		private static void SeedUsers(UserManager<IdentityUser> userManager)
+		{
+			AddUserIfNotExists(userManager, "stefan.holmberg@systementor.se", "Hejsan123#", new string[]{"Admin"});
+			AddUserIfNotExists(userManager, "stefan.holmbergmanager@systementor.se", "Hejsan123#", new string[] { "ProductManager" });
+			AddUserIfNotExists(userManager, "ras@mus.se", "Hejsan123#", new string[] { "Admin", "ProductManager" });
+		}
+
+		private static void AddUserIfNotExists(UserManager<IdentityUser> userManager, string userName, string password, string []roles)
+		{
+			if (userManager.FindByEmailAsync(userName).Result != null) return;
+			var user = new IdentityUser
+			{
+				UserName = userName,
+				Email = userName,
+				EmailConfirmed = true
+			};
+			var result = userManager.CreateAsync(user, password).Result;
+			var r = userManager.AddToRolesAsync(user, roles).Result;
 		}
 
 		private static void SeedCategories(ApplicationDbContext dbContext)
