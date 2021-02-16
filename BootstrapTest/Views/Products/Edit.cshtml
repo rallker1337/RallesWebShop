@@ -12,7 +12,7 @@
 	<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
 	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
 	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Category" asp-route-Id="@Model.Category">@Model.CategortyTitle</a></li>
-	<li class="breadcrumb-item disabled"><a href="#">@Model.Title</a></li>
+	<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Product" asp-route-Id="@Model.Id">@Model.Title</a></li>
 	<li class="breadcrumb-item disabled"><a href="#">Edit</a></li>
 </ol>
 <h1>Edit @title</h1>
