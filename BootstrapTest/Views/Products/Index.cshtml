@@ -7,14 +7,23 @@
 		<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
 	</ol>
 	<div class="row d-flex align-items-center justify-content-center card-body prod-row">
-		@foreach (var categorie in Model.Categories)
+		@if (String.IsNullOrEmpty(Model.q))
+		{ 
+			@foreach (var categorie in Model.Categories)
+			{
+				<div class="pl-2 pr-2">
+					<a asp-controller="Products" asp-action="Category" asp-route-Id="@categorie.Id" class="btn bg-orange rounded-pill shadow-sm"><h4 class="m-1">@categorie.Title</h4></a>
+				</div>
+			}
+		}
+		else
 		{
-			<div class="pl-2 pr-2">
-				<a asp-controller="Products" asp-action="Category" asp-route-Id="@categorie.Id" class="btn bg-orange rounded-pill shadow-sm"><h4 class="m-1">@categorie.Title</h4></a>
+			<div class="p-5 mt-5">
+				<a asp-controller="Products" asp-action="Index" class="btn bg-orange rounded-pill shadow-sm"><h4 class="m-1">Back</h4></a>
 			</div>
 		}
 	</div>
-	if (Model.q != null)
+	if (!String.IsNullOrEmpty(Model.q))
 	{
 		if (Model.Products.Count != 0)
 		{
@@ -23,7 +32,7 @@
 		}
 		else
 		{
-			<h1>No result found for: @Model.q</h1>
+			<h1 class="p-5">No result found for: @Model.q</h1>
 			ViewData["Title"] = ": " + Model.q;
 		}
 	}
