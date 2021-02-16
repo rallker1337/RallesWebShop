@@ -8,5 +8,7 @@ namespace RasmusWebShop.ViewModels
 		public string q { get; set; }
 
 		public List<ProductViewModel> Products { get; set; } = new List<ProductViewModel>();
+
+		public List<CategoryViewModel> Categories { get; set; } = new List<CategoryViewModel>();
 	}
 }

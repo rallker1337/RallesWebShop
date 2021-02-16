@@ -6,10 +6,18 @@
 		<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
 		<li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
 	</ol>
+	<div class="row d-flex align-items-center justify-content-center card-body prod-row">
+		@foreach (var categorie in Model.Categories)
+		{
+			<div class="pl-2 pr-2">
+				<a asp-controller="Products" asp-action="Category" asp-route-Id="@categorie.Id" class="btn bg-orange rounded-pill shadow-sm"><h4 class="m-1">@categorie.Title</h4></a>
+			</div>
+		}
+	</div>
 	if (Model.q != null)
 	{
-		if(Model.Products.Count != 0)
-		{ 
+		if (Model.Products.Count != 0)
+		{
 			<h1>Search result for: @Model.q</h1>
 			ViewData["Title"] = ": " + Model.q;
 		}
@@ -35,7 +43,7 @@
 				<h3 class="mt-2 p-2">@product.Title</h3>
 			</a>
 			<p class="p-2 d-inline-block">$ @product.Price</p>
-			<a asp-controller="Products" asp-action="Edit" asp-route-Id="@product.Id">	
+			<a asp-controller="Products" asp-action="Edit" asp-route-Id="@product.Id">
 				<button class="btn btn-secondary float-right mb-2 edit-text">
 					<p class="">Edit</p>
 				</button>

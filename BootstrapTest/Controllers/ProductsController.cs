@@ -35,6 +35,11 @@ namespace RasmusWebShop.Controllers
 					Category = dbProd.Category.Title
 				}).ToList();
 			viewModel.q = q;
+			viewModel.Categories = _dbContext.Categories.Select(dbCat => new CategoryViewModel
+			{
+				Id = dbCat.Id,
+				Title = dbCat.Title,
+			}).ToList();
 			return View(viewModel);
 		}
 		public IActionResult Category(int Id)
