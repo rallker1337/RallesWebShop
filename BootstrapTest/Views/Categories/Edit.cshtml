@@ -24,7 +24,7 @@
 
 			<div class="title-edit input-group d-inline-block mb-5 mt-5 col-7 mt-5 ml-4">
 				<label class="orange pt-3" asp-for="Title">Title</label>
-				<input type="text" class=" bigger-text input form-control no-border bg-transparent border-0 w-100" asp-for="Title">
+				<input type="text" class="bigger-text input form-control no-border bg-transparent border-0 w-100" asp-for="Title">
 				<span asp-validation-for="Title" class="field-validation-error"></span>
 			</div>
 
@@ -33,7 +33,7 @@
 		</div>
 		<div class="col-lg-6 col-md-8 col-sm-10 m-3">
 			<button type="submit" class="btn bg-orange">Save changes</button>
-			<button asp-controller="Categories" asp-action="Index" class="btn btn-secondary">Cancel</button>
+			<a asp-controller="Categories" asp-action="Index" class="btn btn-secondary">Cancel</a>
 		</div>
 	</div>
 </form>
