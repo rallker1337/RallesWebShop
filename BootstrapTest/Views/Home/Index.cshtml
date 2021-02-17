@@ -25,12 +25,13 @@
 		</a>
 	</div>
 	}
-	<h1 class="col-10 pt-5 pb-5 text-left">Categories</h1>
+	<h1 class="col-10 pt-5 pb-3 text-left">Categories</h1>
+	<div class="col-10 row d-flex align-items-center justify-content-center">
 	@foreach (var categorie in Model.Categories)
 	{
-		<div class="p-2 mt-3">
+		<div class="p-2 mt-4 d-inline-block">
 			<a asp-controller="Products" asp-action="Category" asp-route-Id="@categorie.Id" class="btn bg-orange rounded-pill shadow-sm"><h4 class="m-1">@categorie.Title</h4></a>
 		</div>
 	}
-
+	</div>
 </div>
